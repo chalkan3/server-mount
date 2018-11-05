@@ -1,0 +1,35 @@
+[Unit]
+Description=Cogtive JAIMINHO | Jaiminho | GREEN | Core .NET running on CentOS 7
+
+[Service]
+WorkingDirectory=/opt/cogtive/jaiminho/green/core/Jaiminho
+ExecStart=/usr/bin/dotnet /opt/cogtive/jaiminho/green/core/Aplicacao/Cogtive.Core.Jaiminho.dll
+Restart=always
+RestartSec=2  # Restart service after 2 seconds if dotnet service crashes
+SyslogIdentifier=dotnet-example
+User=root
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+
+#SMTP
+Environment=SMTP_SERVER=mail.cogtive.com.br
+Environment=SMTP_PORTA=587
+Environment=SMTP_CREDENCIAL=false
+Environment=SMTP_USUARIO=
+Environment=SMTP_SENHA=
+Environment=SMTP_EMAIL=
+
+
+#RABBITMQ
+Environment=RABBITMQ_VIRTUALHOST=oi
+Environment=RABBITMQ_USERNAME=oi
+Environment=RABBITMQ_PASSWORD=oi
+Environment=RABBITMQ_HOSTNAME=localhost
+Environment=RABBITMQ_POST=5672
+Environment=RABBIT_QUEUE_EVENTOS=eventos
+Environment=RABBIT_QUEUE_HEIMDALL=heimdall
+Environment=RABBIT_QUEUE_VELMA=velma
+Environment=RABBIT_QUEUE_EMAIL=email
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row">
+        <form class="col s12" id='formcreate'>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Placeholder" id="nome" name="nome" type="text" class="validate">
+              <label for="first_name">Cliente Nome</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate" name="path">
+              <label for="last_name">Path do servidor</label>
+            </div>
+          </div>
+          <div class="row">
+                <div class="input-field col s3">
+                  <input placeholder="Placeholder" id="BancoUsername" name="BancoUsername" type="text" class="validate">
+                  <label for="BancoUsername">Username Banco</label>
+                </div>
+                <div class="input-field col s3">
+                  <input id="BancoPassword" type="text" class="validate" name="BancoPassword">
+                  <label for="BancoPassword">Password Banco</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="Banco" type="text" class="validate" name="Banco">
+                    <label for="Banco"> Banco</label>
+                </div>
+                <div class="input-field col s3">
+                        <input id="BancoConexao" type="text" class="validate" name="BancoConexao">
+                        <label for="BancoConexao"> BancoConexao</label>
+                    </div>
+            </div>
+
+            <div class="row">
+                    <div class="input-field col s3">
+                      <input placeholder="Placeholder" id="RabbitUsername" name="RabbitUsername" type="text" class="validate">
+                      <label for="RabbitUsername">Username Rabbit</label>
+                    </div>
+                    <div class="input-field col s3">
+                      <input id="RabbitPassword" type="text" class="validate" name="RabbitPassword">
+                      <label for="RabbitPassword">Password Rabbit</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="vhost" type="text" class="validate" name="vhost">
+                        <label for="vhost"> vhost</label>
+                    </div>
+                </div>
+            <div class="row">
+                    <div class="input-field col s3">
+                        <input placeholder="Placeholder" id="clientport" name="clientport" type="text" class="validate">
+                        <label for="clientport">Client Port</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="apiv2port" type="text" class="validate" name="apiv2port">
+                        <label for="apiv2port">Api V2 Port</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="apiv1port" type="text" class="validate" name="apiv1port">
+                        <label for="apiv1port"> Api Aplicacao Port</label>
+                    </div>
+                </div>
+          <div class="row">
+              <div class="col s3">
+                    <p>
+                        <label>
+                            <input name="greenblue" type="checkbox"  value="true"/>
+                            <span>Green/Blue</span>
+                        </label>
+                    </p>
+              </div>
+              <div class="col s3">
+                    <p>
+                            <label>
+                                <input name="ad" type="checkbox"  value="true"/>
+                                <span>AD</span>
+                            </label>
+                        </p>
+              </div>
+                
+               
+          </div>
+          <div class="row">
+                <a id='submit' class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Criar</a>
+          </div>
+        </form>
+      </div>
+      <script>
+          $('#submit').on('click', () => {
+              let formSerialize = $('#formcreate').serialize()
+              $.post('/create',formSerialize, data => {
+                  if(data.ok == 'ok'){
+                      alert('Cliente Criado com sucesso')
+                  }else{
+                      alert('Algo errado aconteceu')
+                  }
+              })
+          })
+      </script>
+</body>
+</html>
