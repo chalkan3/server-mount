@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mount:
+    image: golang:latest
+    build: .
+    volumes:
+      - ./src:/app
+    command: /bin/bash -c " sed -i 's/\r//g' /app/main.sh && chmod +x /app/main.sh && /app/main.sh"
+
+    container_name: cgtv-mount
+    ports:
+      - 9090:9090
+
+    
